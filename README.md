@@ -8,7 +8,7 @@ A modern job portal web application built with React and Material-UI.
 
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/Mauoser/job-portal.git
    cd job-portal
    ```
 2. **Install dependencies:**
@@ -71,7 +71,5 @@ job-portal/
   - Fully responsive layout for desktop and mobile.
 - **Navigation:**
   - Intuitive navbar for seamless page transitions.
-- **Contact Form:**
-  - Submit inquiries via a styled contact form.
 - **Modern UI:**
   - Material-UI components, gradients, and card layouts for a professional look.
