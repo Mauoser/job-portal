@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Assignment 9: React Job Portal with Material UI and Axios
 
 A modern job portal web application built with React and Material-UI.
@@ -76,6 +75,3 @@ job-portal/
   - Submit inquiries via a styled contact form.
 - **Modern UI:**
   - Material-UI components, gradients, and card layouts for a professional look.
-=======
-
->>>>>>> 6054eb54500e67c8527afb57d5a3756dedfe1b4e
