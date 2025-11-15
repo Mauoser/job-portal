@@ -15,16 +15,11 @@ const CompanyShowcase = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/user/getAll");
-        // res.data.users expected
-        const users = res.data.users || [];
-        // map to objects with image path and name
-        const comps = users
-          .filter((u) => u.imagePath) // only with images
-          .map((u) => ({
-            name: u.fullName,
-            imagePath: `http://localhost:3000${u.imagePath}`,
-          }));
+        const res = await axios.get("http://localhost:3000/user/companyImage");
+        const comps = res.data.companies.map((c) => ({
+          name: c.companyName,
+          imagePath: `http://localhost:3000${c.imagePath}`,
+        }));
         setCompanies(comps);
       } catch (err) {
         console.error("Error fetching companies:", err);
