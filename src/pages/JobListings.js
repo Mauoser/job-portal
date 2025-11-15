@@ -7,6 +7,7 @@ import {
   Typography,
   CardActions,
   Button,
+  Box,
 } from "@mui/material";
 
 const jobPosts = [
@@ -104,53 +105,124 @@ const jobPosts = [
 
 const JobListings = () => {
   return (
-    <Container sx={{ mt: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        Job Listings
-      </Typography>
-      <Grid container spacing={2}>
-        {jobPosts.map((job) => (
-          <Grid item xs={12} sm={6} md={4} key={job.id}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  {job.title}
-                </Typography>
-                <Typography variant="body2" sx={{ mb: 2 }}>
-                  {job.description}
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ fontWeight: "bold", mt: 2, mb: 1 }}
-                >
-                  Salary:
-                </Typography>
-                <Typography variant="body2" sx={{ mb: 2 }}>
-                  {job.salary}
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ fontWeight: "bold", mb: 1 }}
-                >
-                  Required Skills:
-                </Typography>
-                <Typography variant="body2" sx={{ mb: 2 }}>
-                  {job.requiredSkills.join(", ")}
-                </Typography>
-                <Typography variant="caption" display="block" sx={{ mt: 1 }}>
-                  {job.lastUpdated}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small" href={job.applyLink} target="_blank">
-                  Apply
-                </Button>
-              </CardActions>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Box>
+      {/* Header Section */}
+      <Box
+        sx={{
+          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          color: "white",
+          py: 6,
+          textAlign: "center",
+        }}
+      >
+        <Typography variant="h3" sx={{ fontWeight: 700, mb: 2 }}>
+          Job Listings
+        </Typography>
+        <Typography variant="h6" sx={{ opacity: 0.9 }}>
+          Find your next opportunity from our curated list of positions
+        </Typography>
+      </Box>
+
+      <Container sx={{ py: 6 }}>
+        <Grid
+          container
+          spacing={3}
+          sx={{
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "repeat(2, 1fr)",
+              md: "repeat(3, 1fr)",
+            },
+            gap: 3,
+          }}
+        >
+          {jobPosts.map((job) => (
+            <Grid item xs={12} sm={6} md={4} key={job.id}>
+              <Card
+                className="job-card"
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  borderRadius: "12px",
+                }}
+              >
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Typography
+                    variant="h6"
+                    sx={{ fontWeight: 700, mb: 1, color: "#667eea" }}
+                  >
+                    {job.title}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ mb: 2, color: "#666", lineHeight: 1.6 }}
+                  >
+                    {job.description}
+                  </Typography>
+
+                  <Box sx={{ mb: 2, pt: 2, borderTop: "1px solid #e0e0e0" }}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ fontWeight: "bold", mb: 1, color: "#333" }}
+                    >
+                      💰 {job.salary}
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{ mb: 2 }}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{ fontWeight: "bold", mb: 1.5, color: "#333" }}
+                    >
+                      Required Skills:
+                    </Typography>
+                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+                      {job.requiredSkills.map((skill, idx) => (
+                        <span key={idx} className="skill-tag">
+                          {skill}
+                        </span>
+                      ))}
+                    </Box>
+                  </Box>
+
+                  <Typography
+                    variant="caption"
+                    display="block"
+                    sx={{ color: "#999", mt: 2 }}
+                  >
+                    ⏱ {job.lastUpdated}
+                  </Typography>
+                </CardContent>
+                <CardActions sx={{ pt: 0 }}>
+                  <Button
+                    href={job.applyLink}
+                    target="_blank"
+                    variant="contained"
+                    sx={{
+                      background:
+                        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                      color: "white",
+                      fontWeight: 600,
+                      textTransform: "uppercase",
+                      fontSize: "0.85rem",
+                      ml: "auto",
+                      "&:hover": {
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 8px 20px rgba(102, 126, 234, 0.4)",
+                      },
+                    }}
+                  >
+                    Apply Now
+                  </Button>
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
